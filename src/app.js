@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('./controllers/userController');
+const { userValidator } = require('./middlewares/userValidator');
 
 // ...
 
@@ -11,7 +12,9 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
-app.post('/login', userController.createUser);
+app.post('/login', userController.login);
+
+app.post('/user', userValidator, userController.createUser);
 
 // ...
 
