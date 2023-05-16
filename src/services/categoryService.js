@@ -1,8 +1,9 @@
 const { Category } = require('../models');
 
   const createCategory = async ({ name }) => {
-    const newUser = await Category.create({ name });
-    return newUser;
+    console.log('NAMESERV', name);
+    const newCategory = await Category.create({ name });
+    return newCategory;
   };
 
   module.exports = {
