@@ -6,6 +6,12 @@ const { Category } = require('../models');
     return newCategory;
   };
 
+  const getAll = async () => {
+    const getCategorys = await Category.findAll();
+    return getCategorys;
+  };
+
   module.exports = {
     createCategory,
+    getAll,
   };
