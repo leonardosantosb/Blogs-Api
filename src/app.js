@@ -1,4 +1,5 @@
 const express = require('express');
+const categoryController = require('./controllers/categoryController');
 const userController = require('./controllers/userController');
 const { tokenValidator } = require('./middlewares/tokenValidator');
 const { userValidator, OneValidator } = require('./middlewares/userValidator');
@@ -20,6 +21,8 @@ app.post('/user', userValidator, userController.createUser);
 app.get('/user', tokenValidator, userController.getAll);
 
 app.get('/user/:id', tokenValidator, OneValidator, userController.getOne);
+
+app.post('/categories', tokenValidator, categoryController.createCategory);
 
 // ...
 
