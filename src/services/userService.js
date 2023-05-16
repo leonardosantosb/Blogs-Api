@@ -10,7 +10,13 @@ const { User } = require('../models');
     return newUser;
   };
 
+  const getAll = async () => {
+    const getUsers = await User.findAll({ attributes: { exclude: 'password' } });
+    return getUsers;
+  };
+
   module.exports = {
     login,
     createUser,
+    getAll,
   };

@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('./controllers/userController');
+const { tokenValidator } = require('./middlewares/tokenValidator');
 const { userValidator } = require('./middlewares/userValidator');
 
 // ...
@@ -15,6 +16,8 @@ app.get('/', (_request, response) => {
 app.post('/login', userController.login);
 
 app.post('/user', userValidator, userController.createUser);
+
+app.get('/user', tokenValidator, userController.getAll);
 
 // ...
 
