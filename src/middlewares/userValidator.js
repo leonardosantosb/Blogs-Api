@@ -24,6 +24,16 @@ if (userVerify) { return res.status(409).json({ message: 'User already registere
 next();
 };
 
+const OneValidator = async (req, res, next) => {
+  const { id } = req.params;
+  const userVerify = await User.findOne({ where: { id } });
+  if (!userVerify) {
+    return res.status(404).json({ message: 'User does not exist' });
+  }
+  next();
+};
+
 module.exports = {
   userValidator,
+  OneValidator,
 };

@@ -36,8 +36,15 @@ const getAll = async (req, res) => {
   return res.status(200).json(getUsers);
 };
 
+const getOne = async (req, res) => {
+  const { id } = req.params;
+  const getUser = await userService.getOne({ id });
+  return res.status(200).json(getUser);
+};
+
 module.exports = {
   login,
   createUser,
   getAll,
+  getOne,
 };

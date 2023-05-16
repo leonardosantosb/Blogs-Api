@@ -1,7 +1,7 @@
 const express = require('express');
 const userController = require('./controllers/userController');
 const { tokenValidator } = require('./middlewares/tokenValidator');
-const { userValidator } = require('./middlewares/userValidator');
+const { userValidator, OneValidator } = require('./middlewares/userValidator');
 
 // ...
 
@@ -18,6 +18,8 @@ app.post('/login', userController.login);
 app.post('/user', userValidator, userController.createUser);
 
 app.get('/user', tokenValidator, userController.getAll);
+
+app.get('/user/:id', tokenValidator, OneValidator, userController.getOne);
 
 // ...
 

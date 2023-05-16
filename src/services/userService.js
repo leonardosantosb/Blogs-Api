@@ -15,8 +15,14 @@ const { User } = require('../models');
     return getUsers;
   };
 
+  const getOne = async ({ id }) => {
+    const findOne = await User.findOne({ where: { id }, attributes: { exclude: 'password' } }); 
+    return findOne;
+  };
+
   module.exports = {
     login,
     createUser,
     getAll,
+    getOne,
   };
