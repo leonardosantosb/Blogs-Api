@@ -1,6 +1,7 @@
 const express = require('express');
 const categoryController = require('./controllers/categoryController');
 const userController = require('./controllers/userController');
+const blogPostController = require('./controllers/blogPostController');
 const { categoryValidator } = require('./middlewares/categoryValidator');
 const { tokenValidator } = require('./middlewares/tokenValidator');
 const { userValidator, OneValidator } = require('./middlewares/userValidator');
@@ -26,6 +27,8 @@ app.get('/user/:id', tokenValidator, OneValidator, userController.getOne);
 app.post('/categories', tokenValidator, categoryValidator, categoryController.createCategory);
 
 app.get('/categories', tokenValidator, categoryController.getAll);
+
+app.get('/post', tokenValidator, blogPostController.getAll);
 
 // ...
 
